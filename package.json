@@ -1,6 +1,6 @@
 {
   "name": "nestjs-clean-arch-schematics",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "NestJS schematics for generating Clean Architecture modules with proper layer separation",
   "author": "MatheusHiro",
   "license": "MIT",
