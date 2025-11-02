@@ -156,13 +156,28 @@ export function cleanModule(options: CleanModuleOptions): Rule {
         return false;
       }
       
-      // Skip service files
+      // Skip service files (but not use cases)
       if (options.skipService && (normalizedPath.includes('application/services/') || normalizedPath.includes('/application/services/'))) {
+        return false;
+      }
+
+      // Skip use cases if service is skipped
+      if (options.skipService && (normalizedPath.includes('application/use-cases/') || normalizedPath.includes('/application/use-cases/'))) {
+        return false;
+      }
+
+      // Skip mappers if service is skipped
+      if (options.skipService && (normalizedPath.includes('application/mappers/') || normalizedPath.includes('/application/mappers/'))) {
         return false;
       }
       
       // Skip repository files
       if (options.skipRepository && (normalizedPath.includes('infrastructure/repositories/') || normalizedPath.includes('/infrastructure/repositories/'))) {
+        return false;
+      }
+
+      // Skip ORM entities if repository is skipped
+      if (options.skipRepository && (normalizedPath.includes('infrastructure/persistence/') || normalizedPath.includes('/infrastructure/persistence/'))) {
         return false;
       }
       
@@ -212,16 +227,22 @@ export function cleanModule(options: CleanModuleOptions): Rule {
     if (!options.skipController) generatedFiles.push('  ✅ Controller (REST endpoints)');
     else skippedLayers.push('  ⊘ Controller');
 
-    if (!options.skipService) generatedFiles.push('  ✅ Service (business logic)');
-    else skippedLayers.push('  ⊘ Service');
+    if (!options.skipService) {
+      generatedFiles.push('  ✅ Service (orchestration)');
+      generatedFiles.push('  ✅ Use Cases (business logic)');
+      generatedFiles.push('  ✅ Mappers (entity translation)');
+    } else {
+      skippedLayers.push('  ⊘ Service & Use Cases');
+    }
 
-    if (!options.skipEntity) generatedFiles.push('  ✅ Entity (domain model)');
-    else skippedLayers.push('  ⊘ Entity');
+    if (!options.skipEntity) generatedFiles.push('  ✅ Domain Entity');
+    else skippedLayers.push('  ⊘ Domain Entity');
 
     if (!options.skipRepository) {
       generatedFiles.push('  ✅ Repository interface & implementation');
+      generatedFiles.push('  ✅ ORM Entity (persistence model)');
     } else {
-      skippedLayers.push('  ⊘ Repository');
+      skippedLayers.push('  ⊘ Repository & ORM Entity');
     }
 
     if (!options.skipGateway) generatedFiles.push('  ✅ Gateway (external integrations)');
@@ -246,7 +267,10 @@ Structure:
   ${!options.skipEntity ? '├── domain/entities/' : ''}
   ${!options.skipRepository ? '├── domain/interfaces/' : ''}
   ${!options.skipService ? '├── application/services/' : ''}
+  ${!options.skipService ? '├── application/use-cases/' : ''}
+  ${!options.skipService ? '├── application/mappers/' : ''}
   ${!options.skipRepository ? '├── infrastructure/repositories/' : ''}
+  ${!options.skipRepository ? '├── infrastructure/persistence/' : ''}
   ${!options.skipGateway ? '├── infrastructure/gateways/' : ''}
   └── ${name}.module.ts
 
