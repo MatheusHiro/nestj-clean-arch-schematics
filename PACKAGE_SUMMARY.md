@@ -1,6 +1,6 @@
 # Package Summary
 
-## 📦 @nestjs-clean-arch/schematics
+## 📦 nestjs-clean-arch-schematics
 
 A standalone npm package for generating Clean Architecture modules in NestJS projects.
 
@@ -94,13 +94,13 @@ When built (`npm run build`):
 
 ```bash
 # Global installation
-npm install -g @nestjs-clean-arch/schematics
+npm install -g nestjs-clean-arch-schematics
 
 # Local installation
-npm install --save-dev @nestjs-clean-arch/schematics
+npm install --save-dev nestjs-clean-arch-schematics
 
 # Use with npx (no installation)
-npx @nestjs-clean-arch/schematics <module-name>
+npx nestjs-clean-arch-schematics <module-name>
 ```
 
 ### For Developers

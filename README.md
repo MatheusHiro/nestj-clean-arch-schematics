@@ -36,19 +36,19 @@ A powerful NestJS schematic package that generates Clean Architecture modules wi
 ### Global Installation (Recommended)
 
 ```bash
-npm install -g @nestjs-clean-arch/schematics
+npm install -g nestjs-clean-arch-schematics
 ```
 
 ### Local Installation
 
 ```bash
-npm install --save-dev @nestjs-clean-arch/schematics
+npm install --save-dev nestjs-clean-arch-schematics
 ```
 
 ### Using npx (No Installation Required)
 
 ```bash
-npx @nestjs-clean-arch/schematics <module-name> [options]
+npx nestjs-clean-arch-schematics <module-name> [options]
 ```
 
 ## 🚀 Quick Start
@@ -63,7 +63,7 @@ nestjs-clean user
 npx nestjs-clean user
 
 # Or use npx without installation
-npx @nestjs-clean-arch/schematics user
+npx nestjs-clean-arch-schematics user
 ```
 
 This creates a complete user module with all layers in `src/modules/user/`.
@@ -271,7 +271,7 @@ npm run g:clean user
 
    ```typescript
    // app.module.ts
-   import { UserModule } from './modules/user/user.module';
+   import { UserModule } from "./modules/user/user.module";
 
    @Module({
      imports: [UserModule],

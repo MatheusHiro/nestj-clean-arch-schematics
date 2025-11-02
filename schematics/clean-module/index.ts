@@ -44,7 +44,7 @@ function showHelp() {
 
 USAGE:
   nestjs-clean generate <name> [options]
-  npx @nestjs-clean-arch/schematics <name> [options]
+  npx nestjs-clean-arch-schematics <name> [options]
 
 ARGUMENTS:
   <name>          The name of the module (required)

@@ -21,7 +21,7 @@ if (args.length === 0 || args.includes('--help') || args.includes('-h')) {
 
 USAGE:
   nestjs-clean <name> [options]
-  npx @nestjs-clean-arch/schematics <name> [options]
+  npx nestjs-clean-arch-schematics <name> [options]
 
 ARGUMENTS:
   <name>          The name of the module (required)

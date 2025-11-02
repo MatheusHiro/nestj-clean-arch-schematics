@@ -9,19 +9,19 @@ Choose your preferred installation method:
 ### Option A: Global Installation (Recommended)
 
 ```bash
-npm install -g @nestjs-clean-arch/schematics
+npm install -g nestjs-clean-arch-schematics
 ```
 
 ### Option B: Local Installation
 
 ```bash
-npm install --save-dev @nestjs-clean-arch/schematics
+npm install --save-dev nestjs-clean-arch-schematics
 ```
 
 ### Option C: Use with npx (No Installation)
 
 ```bash
-npx @nestjs-clean-arch/schematics <module-name>
+npx nestjs-clean-arch-schematics <module-name>
 ```
 
 ## Step 2: Generate Your First Module
@@ -53,8 +53,8 @@ src/modules/user/
 Add to your `app.module.ts`:
 
 ```typescript
-import { Module } from '@nestjs/common';
-import { UserModule } from './modules/user/user.module';
+import { Module } from "@nestjs/common";
+import { UserModule } from "./modules/user/user.module";
 
 @Module({
   imports: [UserModule],
@@ -86,7 +86,7 @@ export class User {
 Edit `src/modules/user/presentation/dtos/create-user.dto.ts`:
 
 ```typescript
-import { IsString, IsEmail, IsNotEmpty, MinLength } from 'class-validator';
+import { IsString, IsEmail, IsNotEmpty, MinLength } from "class-validator";
 
 export class CreateUserDto {
   @IsEmail()
@@ -163,21 +163,25 @@ nestjs-clean notification --skip-controller --skip-dtos
 ## Next Steps
 
 1. **Add Database Integration**
+
    - Install TypeORM, Prisma, or your preferred ORM
    - Update repository implementation
    - Connect to your database
 
 2. **Add Validation**
+
    - Install `class-validator` and `class-transformer`
    - Enable global validation pipe
    - Add more validation rules to DTOs
 
 3. **Add Authentication**
+
    - Generate auth module
    - Implement JWT strategy
    - Add guards to protect routes
 
 4. **Add Tests**
+
    - Write unit tests for services
    - Write integration tests for controllers
    - Mock repositories for testing
