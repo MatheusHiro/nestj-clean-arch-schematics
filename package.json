@@ -1,0 +1,68 @@
+{
+  "name": "@nestjs-clean-arch/schematics",
+  "version": "1.0.0",
+  "description": "NestJS schematics for generating Clean Architecture modules with proper layer separation",
+  "author": "MatheusHiro",
+  "license": "MIT",
+  "keywords": [
+    "nestjs",
+    "schematics",
+    "clean-architecture",
+    "clean-arch",
+    "ddd",
+    "domain-driven-design",
+    "hexagonal-architecture",
+    "layered-architecture",
+    "generator",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MatheusHiro/nestjs-clean-arch-schematics"
+  },
+  "bugs": {
+    "url": "https://github.com/MatheusHiro/nestjs-clean-arch-schematics/issues"
+  },
+  "homepage": "https://github.com/MatheusHiro/nestjs-clean-arch-schematics#readme",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "nestjs-clean": "./bin/nestjs-clean.js"
+  },
+  "schematics": "./dist/collection.json",
+  "files": [
+    "dist/**/*",
+    "bin/**/*",
+    "schematics/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "npm run clean && npm run compile && npm run copy:assets",
+    "clean": "rm -rf dist",
+    "compile": "tsc -p tsconfig.json",
+    "copy:assets": "npm run copy:schemas && npm run copy:templates",
+    "copy:schemas": "cp schematics/collection.json dist/ && cp schematics/clean-module/schema.json dist/clean-module/",
+    "copy:templates": "cp -r schematics/clean-module/files dist/clean-module/",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^10.0.0 || ^11.0.0",
+    "@nestjs/core": "^10.0.0 || ^11.0.0"
+  },
+  "dependencies": {
+    "@angular-devkit/core": "^20.0.0",
+    "@angular-devkit/schematics": "^20.0.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/schematics-cli": "^20.0.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
+

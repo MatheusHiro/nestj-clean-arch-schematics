@@ -1,0 +1,11 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "clean-module": {
+      "description": "Generate a Clean Architecture module with presentation, domain, application, and infrastructure layers",
+      "factory": "./clean-module/index#cleanModule",
+      "schema": "./clean-module/schema.json"
+    }
+  }
+}
+

@@ -1,0 +1,114 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "CleanModuleSchema",
+  "title": "Clean Architecture Module Options Schema",
+  "description": "Generate a NestJS module following Clean Architecture principles with presentation, domain, application, and infrastructure layers.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the module",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use for the module?"
+    },
+    "path": {
+      "type": "string",
+      "format": "path",
+      "description": "The path where the module will be generated",
+      "default": "src/modules"
+    },
+    "flat": {
+      "type": "boolean",
+      "description": "Flag to indicate if a directory should be created",
+      "default": false
+    },
+    "skipController": {
+      "type": "boolean",
+      "description": "Skip generating the controller (presentation layer)",
+      "default": false,
+      "x-user-analytics": "skipController"
+    },
+    "sc": {
+      "type": "boolean",
+      "description": "Alias for --skip-controller",
+      "default": false
+    },
+    "skipService": {
+      "type": "boolean",
+      "description": "Skip generating the service (application layer)",
+      "default": false,
+      "x-user-analytics": "skipService"
+    },
+    "ss": {
+      "type": "boolean",
+      "description": "Alias for --skip-service",
+      "default": false
+    },
+    "skipRepository": {
+      "type": "boolean",
+      "description": "Skip generating the repository (infrastructure layer)",
+      "default": false,
+      "x-user-analytics": "skipRepository"
+    },
+    "sr": {
+      "type": "boolean",
+      "description": "Alias for --skip-repository",
+      "default": false
+    },
+    "skipEntity": {
+      "type": "boolean",
+      "description": "Skip generating the entity (domain layer)",
+      "default": false,
+      "x-user-analytics": "skipEntity"
+    },
+    "se": {
+      "type": "boolean",
+      "description": "Alias for --skip-entity",
+      "default": false
+    },
+    "skipGateway": {
+      "type": "boolean",
+      "description": "Skip generating the gateway (infrastructure layer)",
+      "default": false,
+      "x-user-analytics": "skipGateway"
+    },
+    "sg": {
+      "type": "boolean",
+      "description": "Alias for --skip-gateway",
+      "default": false
+    },
+    "skipDtos": {
+      "type": "boolean",
+      "description": "Skip generating DTOs (presentation layer)",
+      "default": false,
+      "x-user-analytics": "skipDtos"
+    },
+    "sd": {
+      "type": "boolean",
+      "description": "Alias for --skip-dtos",
+      "default": false
+    },
+    "crud": {
+      "type": "boolean",
+      "description": "Generate CRUD operations (default: true)",
+      "default": true
+    },
+    "minimal": {
+      "type": "boolean",
+      "description": "Generate minimal structure (only module file and basic folders)",
+      "default": false,
+      "x-user-analytics": "minimal"
+    },
+    "m": {
+      "type": "boolean",
+      "description": "Alias for --minimal",
+      "default": false
+    }
+  },
+  "required": ["name"],
+  "additionalProperties": false
+}
+
