@@ -1,6 +1,6 @@
 import { BaseEntity } from '../../../core';
 
-interface <%= classify(name) %>Props {
+interface <%= classify(name) %>Props extends Record<string, unknown> {
   // TODO: Add your domain properties here
   // Example: name: string;
 }

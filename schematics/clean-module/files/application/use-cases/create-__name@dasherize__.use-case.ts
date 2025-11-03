@@ -1,7 +1,8 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { <%= classify(name) %>Repository, <%= underscore(name).toUpperCase() %>_REPOSITORY_TOKEN } from '../../domain/interfaces/<%= dasherize(name) %>.repository.interface';
+import type { <%= classify(name) %>Repository } from '../../domain/interfaces/<%= dasherize(name) %>.repository.interface';
+import { <%= underscore(name).toUpperCase() %>_REPOSITORY_TOKEN } from '../../domain/interfaces/<%= dasherize(name) %>.repository.interface';
 import { <%= classify(name) %> } from '../../domain/entities/<%= dasherize(name) %>.entity';
-import { Create<%= classify(name) %>Dto } from '../../presentation/dtos/create-<%= dasherize(name) %>.dto';
+import type { Create<%= classify(name) %>Dto } from '../../presentation/dtos/create-<%= dasherize(name) %>.dto';
 import { <%= classify(name) %>Mapper } from '../mappers/<%= dasherize(name) %>.mapper';
 import { <%= classify(name) %>AlreadyExistsException, Invalid<%= classify(name) %>Exception } from '../../domain/exceptions/<%= dasherize(name) %>.exception';
 

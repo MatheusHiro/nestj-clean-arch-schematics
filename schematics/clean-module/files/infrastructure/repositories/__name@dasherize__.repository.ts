@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { <%= classify(name) %>Repository } from '../../domain/interfaces/<%= dasherize(name) %>.repository.interface';
+import type { <%= classify(name) %>Repository } from '../../domain/interfaces/<%= dasherize(name) %>.repository.interface';
 import { <%= classify(name) %>OrmEntity } from '../persistence/<%= dasherize(name) %>.orm-entity';
 
 /**

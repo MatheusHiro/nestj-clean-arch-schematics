@@ -1,5 +1,6 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { <%= classify(name) %>Repository, <%= underscore(name).toUpperCase() %>_REPOSITORY_TOKEN } from '../../domain/interfaces/<%= dasherize(name) %>.repository.interface';
+import type { <%= classify(name) %>Repository } from '../../domain/interfaces/<%= dasherize(name) %>.repository.interface';
+import { <%= underscore(name).toUpperCase() %>_REPOSITORY_TOKEN } from '../../domain/interfaces/<%= dasherize(name) %>.repository.interface';
 import { <%= classify(name) %>NotFoundException } from '../../domain/exceptions/<%= dasherize(name) %>.exception';
 
 /**

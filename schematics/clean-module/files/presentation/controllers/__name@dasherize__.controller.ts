@@ -10,8 +10,8 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { <%= classify(name) %>Service } from '../../application/services/<%= dasherize(name) %>.service';
-import { Create<%= classify(name) %>Dto } from '../dtos/create-<%= dasherize(name) %>.dto';
-import { Update<%= classify(name) %>Dto } from '../dtos/update-<%= dasherize(name) %>.dto';
+import type { Create<%= classify(name) %>Dto } from '../dtos/create-<%= dasherize(name) %>.dto';
+import type { Update<%= classify(name) %>Dto } from '../dtos/update-<%= dasherize(name) %>.dto';
 
 /**
  * <%= classify(name) %> Controller
