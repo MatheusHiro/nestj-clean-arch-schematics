@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.3] - 2025-11-14
+
+### Fixed
+- **npx Compatibility**: Improved binary resolution for `npx` installations
+  - Uses `require.resolve()` to locate schematics CLI dynamically
+  - Falls back to `npx -y @angular-devkit/schematics-cli` when binary not found
+  - Fixes "No such file or directory" error when running via `npx`
+  - Now works correctly with global, local, and npx installations
+
+### Changed
+- **Architecture Clarification**: Refined repository and mapper responsibilities
+  - Repository interface works with ORM entities (infrastructure concern)
+  - Repository implementation handles only persistence operations
+  - Mapper is used by use cases (application layer), not by repository
+  - Use cases translate between ORM entities and domain entities
+  - This ensures proper Clean Architecture layer separation
+
 ## [1.2.0] - 2025-11-02
 
 ### Added

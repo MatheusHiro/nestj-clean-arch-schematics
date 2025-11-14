@@ -96,17 +96,36 @@ const firstArg = args[0];
 const schematic = firstArg === "core" ? "core" : "clean-module";
 const schematicArgs = firstArg === "core" ? args.slice(1) : args;
 
-// Build the schematics command
-// Use the schematics binary from our node_modules
-const schematicsBin = path.join(
-  packageDir,
-  "node_modules",
-  ".bin",
-  "schematics"
-);
-const schematicsCmd = `"${schematicsBin}" ${collectionPath}:${schematic} --dry-run=false ${schematicArgs.join(
-  " "
-)}`;
+// Find the schematics CLI binary
+// Try multiple methods to locate it (for npx, global, and local installations)
+let schematicsBin;
+
+try {
+  // Method 1: Try to resolve from this package's dependencies
+  const schematicsCliPath = require.resolve("@angular-devkit/schematics-cli", {
+    paths: [packageDir],
+  });
+  const cliDir = path.dirname(schematicsCliPath);
+  schematicsBin = path.join(cliDir, "bin", "schematics.js");
+} catch (e) {
+  // Method 2: Try the node_modules/.bin path
+  const localBin = path.join(packageDir, "node_modules", ".bin", "schematics");
+  if (require("fs").existsSync(localBin)) {
+    schematicsBin = localBin;
+  } else {
+    // Method 3: Use npx as fallback
+    schematicsBin = "npx";
+  }
+}
+
+// Build the command
+let schematicsCmd;
+if (schematicsBin === "npx") {
+  // Use npx to resolve schematics
+  schematicsCmd = `npx -y @angular-devkit/schematics-cli ${collectionPath}:${schematic} --dry-run=false ${schematicArgs.join(" ")}`;
+} else {
+  schematicsCmd = `"${schematicsBin}" ${collectionPath}:${schematic} --dry-run=false ${schematicArgs.join(" ")}`;
+}
 
 try {
   // Execute the schematic
